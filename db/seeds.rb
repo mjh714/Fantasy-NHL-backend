@@ -5,24 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "deleting old seed"
+puts "deleting old seeds"
 Team.destroy_all
 Contract.destroy_all
 Player.destroy_all
 User.destroy_all
 League.destroy_all
 
-puts "creating user"
-User.create(username: Faker::Internet.username, password: "password", email: Faker::Internet.email)
+puts "creating users"
+50.times do
+    User.create(username: Faker::Internet.username, password: "password", email: Faker::Internet.email)
+end
+puts "creating leagues"
+4.times do
+    League.create(name: Faker::Esport.league)
+end
 
-puts "creating league"
-League.create(name: "NHL")
-
-puts "creating team"
-Team.create(name: "Florida Panthers", user_id: User.all.first.id, league_id: League.all.first.id)
-
-puts "creating player"
-# player = NHL::Player.find("Keith Yandle")
+puts "creating players"
 all_teams = NHL::Team.all
 all_teams.map do |team|
     team.roster.map do |player_inst|
@@ -31,6 +30,14 @@ all_teams.map do |team|
     end
 end
 
+puts "creating teams"
+all_teams = NHL::Team.all
+all_teams.map do |team|
+    Team.create(name: team.name, user_id: User.all.sample.id, league_id: League.all.sample.id)
+end
+
 puts "creating contracts"
-Contract.create(team_id: Team.all.first.id, player_id: Player.all.first.id)
+124.times do
+    Contract.create(team_id: Team.all.sample.id, player_id: Player.all.sample.id)
+end
 puts "done go forth and proser"
