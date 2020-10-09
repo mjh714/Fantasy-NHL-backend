@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     def delete
         user = User.find(params[:id])
         user.destroy
-    
         render json: {}
     end
     
