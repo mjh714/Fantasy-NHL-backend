@@ -13,12 +13,12 @@ User.destroy_all
 League.destroy_all
 
 puts "creating users"
-20.times do
+31.times do
     User.create(username: Faker::Internet.username, password: "password", email: Faker::Internet.email)
 end
 puts "creating leagues"
 4.times do
-    League.create(name: Faker::Esport.league)
+    League.create(name: Faker::Esport.unique.league)
 end
 
 puts "creating players"
@@ -33,11 +33,11 @@ end
 puts "creating teams"
 all_teams = NHL::Team.all
 all_teams.map do |team|
-    Team.create(name: team.name, user_id: User.all.uniq.sample.id, league_id: League.all.uniq.sample.id)
+    Team.create(name:team.name, user_id: User.all.uniq.sample.id, league_id: League.all.uniq.sample.id)
 end
 
 puts "creating contracts"
-300.times do
+620.times do
     Contract.create(team_id: Team.all.uniq.sample.id, player_id: Player.all.uniq.sample.id)
 end
 puts "done go forth and proser"

@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
     end
     
     def create
-        team = Team.create(team)
+        team = Team.create(team_params)
         render :json => team, each_serializer: TeamSerializer
     end
     

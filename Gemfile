@@ -19,9 +19,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'active_model_serializers', '~> 0.10.0'
 gem "jwt", "~> 2.1"
+# gem "nokogiri", "~> 1.10.10"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-gem "pry"
+# gem "pry"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
