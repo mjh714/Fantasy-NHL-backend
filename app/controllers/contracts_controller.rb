@@ -11,6 +11,7 @@ class ContractsController < ApplicationController
     end
     
     def create
+        # byebug
         contract = Contract.create(contract_params)
         render :json => contract, each_serializer: ContractSerializer
     end
