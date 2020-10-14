@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
-    skip_before_action :authorized, only: [:index, :create, :show]
+    skip_before_action :authorized, only: [:index, :create, :show, :find_contract, :destroy]
     def index
         contracts = Contract.all
         render :json => contracts, each_serializer: ContractSerializer
@@ -11,7 +11,6 @@ class ContractsController < ApplicationController
     end
     
     def create
-        # byebug
         contract = Contract.create(contract_params)
         render :json => contract, each_serializer: ContractSerializer
     end
@@ -21,8 +20,14 @@ class ContractsController < ApplicationController
         contract.update(contract_params)
         render :json => contract, each_serializer: ContractSerializer
     end
+
+    def find_contract
+        # byebug
+        contract = Contract.find_by(contract_params)
+        render :json => contract, each_serializer: ContractSerializer
+    end
     
-    def delete
+    def destroy
         contract = Contract.find(params[:id])
         contract.destroy
         render json: {}
