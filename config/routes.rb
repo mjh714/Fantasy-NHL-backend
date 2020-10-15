@@ -4,7 +4,6 @@ Rails.application.routes.draw do
       resources :teams
       resources :leagues
       resources :users
-      # get '/stats', to: 'players#stats'
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       post '/find-contract', to: 'contracts#find_contract'
