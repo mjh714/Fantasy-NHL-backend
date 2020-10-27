@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To bring Hockey fans together this app is to see who is the best GM amongst friends.
 
-Things you may want to cover:
+Futur Goals:
+Finish auth, add trade feature, community chat, local league chat, more validations of players in each league once.
 
-* Ruby version
+Specs:
 
-* System dependencies
+ruby version - 2.6.1
 
-* Configuration
+DB - postgresql
 
-* Database creation
+api - gem 'nhl', git: 'git://github.com/joshua-arts/nhl-ruby.git'
 
-* Database initialization
+Installation Instructions
+run bundle install
 
-* How to run the test suite
+run rails db:create
 
-* Services (job queues, cache servers, search engines, etc.)
+run rails db:migrate
 
-* Deployment instructions
+run rails db:seed
 
-* ...
+Finally, run rails s to start the server and navigate to the port specified in your terminal
